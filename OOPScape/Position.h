@@ -10,5 +10,11 @@ public:
 
 	unsigned int getX() const;
 	unsigned int getY() const;
+
+	void setX(unsigned int aX);
+	void setY(unsigned int aY);
+
+	Position& operator +=(const Position& pos);
+	bool operator ==(const Position& pos) const;
 };
 

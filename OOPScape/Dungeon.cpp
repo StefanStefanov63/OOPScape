@@ -13,11 +13,16 @@ Dungeon::Dungeon( std::ifstream& ifs)
 	
 }
 
+const std::vector<Level>& Dungeon::getLevels() const
+{
+	return levels;
+}
+
 std::ostream& operator<<(std::ostream& os, const Dungeon& dungeon)
 {
-	for (auto it = dungeon.levels.begin();it != dungeon.levels.end(); ++it)
+	for (unsigned int i =0;i < dungeon.floors; ++i)
 	{
-		os << "Floor: " << 1 <<'\n'<< (*it);
+		os << "Floor: " << i+1 <<'\n'<< dungeon.levels[i];
 	}
 
 	return os;

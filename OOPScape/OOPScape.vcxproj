@@ -123,23 +123,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ability.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="CommandFactory.cpp" />
+    <ClCompile Include="Direction.cpp" />
+    <ClCompile Include="HeroFactory.cpp" />
+    <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="Dungeon.cpp" />
-    <ClCompile Include="FactoryNode.cpp" />
+    <ClCompile Include="IEntity.cpp" />
+    <ClCompile Include="NodeFactory.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NullCommand.cpp" />
     <ClCompile Include="OOPScape.cpp" />
     <ClCompile Include="Position.cpp" />
+    <ClCompile Include="Regression.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ability.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="CommandFactory.h" />
+    <ClInclude Include="Direction.h" />
+    <ClInclude Include="HeroFactory.h" />
+    <ClInclude Include="ICommand.h" />
     <ClInclude Include="Dungeon.h" />
-    <ClInclude Include="FactoryNode.h" />
+    <ClInclude Include="IEntity.h" />
+    <ClInclude Include="NodeFactory.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Hero.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="NullCommand.h" />
     <ClInclude Include="Position.h" />
+    <ClInclude Include="Regression.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,4 +10,6 @@ enum class Color
 	White
 };
 
+WORD toConsoleColor(Color color);
+void setConsolColor(Color color);
 

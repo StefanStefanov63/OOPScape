@@ -7,17 +7,21 @@ Level::Level(std::ifstream& ifs)
 	unsigned int n;
 	ifs >> n;
 	size = n;
+	ifs.ignore();
+	if (n<2 || n > 64)
+		throw std::runtime_error("invalid level size");
 
 	for (unsigned int row = 0; row < n; row++)
 	{
-		std::vector<Node> line;
-		line.reserve(size);
-		ifs.ignore();
+		std::string line;
+		std::getline(ifs, line);
+		std::vector<Node> nodeLine;
+		nodeLine.reserve(size);
+
 		for (unsigned int col = 0; col < n; col++)
 		{
 
-			char cSym;
-			ifs.get(cSym);
+			char cSym =  line[col];
 			
 			
 			if (cSym == 'S')
@@ -38,9 +42,9 @@ Level::Level(std::ifstream& ifs)
 				hasEnd = true;
 			}
 
-			line.push_back(FactoryNode::createNode(row, col, cSym));
+			nodeLine.push_back(NodeFactory::createNode(cSym));
 		}
-		map.push_back(line);
+		map.push_back(nodeLine);
 	}
 
 	if (!hasStart)
@@ -50,11 +54,41 @@ Level::Level(std::ifstream& ifs)
 		throw std::runtime_error("Missing end position");
 }
 
+bool Level::isWalable(const Position& pos) const
+{
+	if (pos.getX() < 0 || pos.getX() >= this->size)
+		return false;
+
+	if (pos.getY() < 0 || pos.getY() >= this->size)
+		return false;
+
+	return map[pos.getX()][pos.getY()].isWalkable();
+}
+
+const Position& Level::getHeroStarting() const
+{
+	return heroStarting;
+}
+
+const Position& Level::getExit() const
+{
+	return exit;
+}
+
+unsigned int Level::getSize() const
+{
+	return size;
+}
+
+const std::vector<std::vector<Node>>& Level::getMap() const
+{
+	return map;
+}
+
 std::ostream& operator<<(std::ostream& os, const Level& level)
 {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	setConsolColor(Color::Blue);
 
-	SetConsoleTextAttribute(hConsole, 9);
 	os << std::string(4, ' ');
 	for (unsigned int i = 0; i < level.size; i++)
 	{
@@ -71,9 +105,9 @@ std::ostream& operator<<(std::ostream& os, const Level& level)
 
 	for (unsigned int row = 0; row < level.size; row++)
 	{
-		SetConsoleTextAttribute(hConsole, 9);
+		setConsolColor(Color::Blue);
 		os << ' ' << row << " |";
-		SetConsoleTextAttribute(hConsole, 7);
+		setConsolColor(Color::None);
 
 
 		for (unsigned int col = 0; col < level.size; col++)
@@ -83,7 +117,7 @@ std::ostream& operator<<(std::ostream& os, const Level& level)
 		os << '\n';
 	}
 
-	SetConsoleTextAttribute(hConsole, 9);
+	setConsolColor(Color::Blue);
 
 	os << std::string(4, ' ');
 	os << std::string(level.size * 3, '-');
@@ -94,7 +128,7 @@ std::ostream& operator<<(std::ostream& os, const Level& level)
 	{
 		os << ' ' << i << ' ';
 	}
-	SetConsoleTextAttribute(hConsole, 7);
+	setConsolColor(Color::None);
 
 
 	return os;
