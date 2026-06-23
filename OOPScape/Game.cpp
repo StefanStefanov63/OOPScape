@@ -173,16 +173,10 @@ std::ostream& operator<<(std::ostream& os, const Game& game)
     const Level& level = game.getDungeon().getLevels()[game.getCurrentLevel() - 1];
     unsigned int size = level.getSize();
 
-    os << std::string(4, ' ');
-    for (unsigned int i = 0; i < size; i++)
-    {
-        os << ' ' << i << ' ';
-    }
+    setConsolColor(Color::Blue);
+    os << std::string(size * 3 + 2, '-');
     os << '\n';
-
-    os << std::string(4, ' ');
-    os << std::string(size * 3, '-');
-    os << '\n';
+    setConsolColor(Color::None);
 
 
 
@@ -190,7 +184,7 @@ std::ostream& operator<<(std::ostream& os, const Game& game)
     for (unsigned int row = 0; row < size; row++)
     {
         setConsolColor(Color::Blue);
-        os << ' ' << row << " |";
+        os << "|";
         setConsolColor(Color::None);
 
 
@@ -220,20 +214,14 @@ std::ostream& operator<<(std::ostream& os, const Game& game)
                     os << level.getMap()[row][col];
             }
         }
-        os << '\n';
+        setConsolColor(Color::Blue);
+        os << "|\n";
+        setConsolColor(Color::None);
     }
 
     setConsolColor(Color::Blue);
-
-    os << std::string(4, ' ');
-    os << std::string(size * 3, '-');
+    os << std::string(size * 3 + 2, '-');
     os << '\n';
-
-    os << std::string(4, ' ');
-    for (unsigned int i = 0; i < size; i++)
-    {
-        os << ' ' << i << ' ';
-    }
     setConsolColor(Color::None);
 
     return os;

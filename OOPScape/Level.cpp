@@ -103,20 +103,9 @@ const std::vector<Position>& Level::getEnemyStarting() const
 std::ostream& operator<<(std::ostream& os, const Level& level)
 {
 	setConsolColor(Color::Blue);
-
-	os << std::string(4, ' ');
-	for (unsigned int i = 0; i < level.size; i++)
-	{
-		os << ' ' << i << ' ';
-	}
+	os << std::string(level.getSize() * 3 + 2, '-');
 	os << '\n';
-
-	os << std::string(4, ' ');
-	os << std::string(level.size * 3 , '-');
-	os << '\n';
-
-
-
+	setConsolColor(Color::None);
 
 	for (unsigned int row = 0; row < level.size; row++)
 	{
@@ -129,22 +118,15 @@ std::ostream& operator<<(std::ostream& os, const Level& level)
 		{
 			os << level.map[row][col];
 		}
-		os << '\n';
+		setConsolColor(Color::Blue);
+		os << "|\n";
+		setConsolColor(Color::None);
 	}
 
 	setConsolColor(Color::Blue);
-
-	os << std::string(4, ' ');
-	os << std::string(level.size * 3, '-');
+	os << std::string(level.getSize() * 3 + 2, '-');
 	os << '\n';
-
-	os << std::string(4, ' ');
-	for (unsigned int i = 0; i < level.size; i++)
-	{
-		os << ' ' << i << ' ';
-	}
 	setConsolColor(Color::None);
-
 
 	return os;
 }

@@ -16,7 +16,7 @@ Node NodeFactory::createNode(char aSymbol)
     case 'R':
         return Node(aSymbol, Color::LightRed, true);
     case 'F':
-        return Node(aSymbol, Color::White, true);
+        return Node(aSymbol, Color::Blue, true);
     case 'H':
         return Node(aSymbol, Color::Yellow, true);
     case 'M':

@@ -219,4 +219,12 @@
       <Filter>Header Files\Abilities</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\Desktop\Dungeon1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Dungeon2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

@@ -179,6 +179,10 @@
     <ClInclude Include="Regression.h" />
     <ClInclude Include="WallShift.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\Desktop\Dungeon1.txt" />
+    <Text Include="Dungeon2.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
