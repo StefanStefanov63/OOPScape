@@ -31,3 +31,12 @@ bool Hero::move(const Level& level, Direction direction)
 
     return false;
 }
+
+std::ostream& operator<<(std::ostream& os, const Hero& enemy)
+{
+    setConsolColor(Color::Yellow);
+    os << " H ";
+    setConsolColor(Color::None);
+
+    return os;
+}

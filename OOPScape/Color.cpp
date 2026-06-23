@@ -10,6 +10,7 @@ WORD toConsoleColor(Color color)
 	case Color::White:  return 15;
 	case Color::None:   return 7;
 	case Color::LightRed: return 12;
+	case Color::Brown: return 6;
 	}
 
 	return 7;

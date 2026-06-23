@@ -110,7 +110,7 @@ bool Game::EndCondition()
 
     for (auto& e : enemies)
     {
-        if (hero->getPosition() == e->getPosition())
+        if (hero->getPosition() == e->getPosition() && !e->isStunned())
         {
             enemy = true;
             break;
@@ -202,7 +202,11 @@ std::ostream& operator<<(std::ostream& os, const Game& game)
             {
                 if (e->getPosition() == Position(row, col))
                 {
-                    os << NodeFactory::createNode('M');
+                    if(game.hero->getPosition() == Position(row, col) && e->isStunned())
+                        os << *game.hero;
+                    else
+                        os << *e;
+                    
                     enemy = true;
                     break;
                 }
@@ -211,7 +215,7 @@ std::ostream& operator<<(std::ostream& os, const Game& game)
             if (!enemy)
             {
                 if (game.hero->getPosition() == Position(row, col))
-                    os << NodeFactory::createNode('H');
+                    os << *game.hero;
                 else
                     os << level.getMap()[row][col];
             }

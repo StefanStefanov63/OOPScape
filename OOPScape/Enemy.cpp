@@ -29,3 +29,21 @@ EnemyMovementStrategy& Enemy::getStrategy()
 {
 	return *strategy;
 }
+
+bool Enemy::isStunned() const
+{
+	return stunTurns != 0;
+}
+
+std::ostream& operator<<(std::ostream& os, const Enemy& enemy)
+{
+	if (enemy.isStunned())
+		setConsolColor(Color::Brown);
+	else
+		setConsolColor(Color::Red);
+	os << " M ";
+
+	setConsolColor(Color::None);
+
+	return os;
+}

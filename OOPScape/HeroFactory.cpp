@@ -6,9 +6,9 @@ std::unique_ptr<Hero> HeroFactory::create(const Position& currentPosition, char 
 
 	switch (type)
 	{
-	case 'A':
+	case 'B':
 	{
-		abl = std::make_unique<Regression>();
+		abl = std::make_unique<BardicSong>();
 		break;
 	}
 	case 'C':
@@ -16,8 +16,13 @@ std::unique_ptr<Hero> HeroFactory::create(const Position& currentPosition, char 
 		abl = std::make_unique<Regression>();
 		break;
 	}
+	case 'R':
+	{
+		abl = std::make_unique<WallShift>();
+		break;
+	}
 	default:
-		abl = nullptr;
+		abl = std::make_unique<Regression>();
 		break;
 	}
 

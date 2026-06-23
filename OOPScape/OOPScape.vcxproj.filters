@@ -132,6 +132,12 @@
     <ClCompile Include="AbilityCommand.cpp">
       <Filter>Source Files\Command</Filter>
     </ClCompile>
+    <ClCompile Include="WallShift.cpp">
+      <Filter>Source Files\Abilities</Filter>
+    </ClCompile>
+    <ClCompile Include="BardicSong.cpp">
+      <Filter>Source Files\Abilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ability.h">
@@ -204,7 +210,13 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="AbilityCommand.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="BardicSong.h">
+      <Filter>Header Files\Abilities</Filter>
+    </ClInclude>
+    <ClInclude Include="WallShift.h">
+      <Filter>Header Files\Abilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

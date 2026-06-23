@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="Ability.cpp" />
     <ClCompile Include="AbilityCommand.cpp" />
+    <ClCompile Include="BardicSong.cpp" />
     <ClCompile Include="BFSMovementStrategy.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
@@ -148,10 +149,12 @@
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="RandomMovementStrategy.cpp" />
     <ClCompile Include="Regression.cpp" />
+    <ClCompile Include="WallShift.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ability.h" />
     <ClInclude Include="AbilityCommand.h" />
+    <ClInclude Include="BardicSong.h" />
     <ClInclude Include="BFSMovementStrategy.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CommandFactory.h" />
@@ -174,6 +177,7 @@
     <ClInclude Include="Position.h" />
     <ClInclude Include="RandomMovementStrategy.h" />
     <ClInclude Include="Regression.h" />
+    <ClInclude Include="WallShift.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

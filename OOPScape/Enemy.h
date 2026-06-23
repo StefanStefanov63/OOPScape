@@ -16,5 +16,7 @@ public:
 	bool move(const Position& herePosition, const Level& level);
 	Enemy(const Position& currentPosition, std::unique_ptr<EnemyMovementStrategy> strategy);
 	EnemyMovementStrategy& getStrategy();
+	bool isStunned() const;
+	friend std::ostream& operator<<(std::ostream& os, const Enemy& enemy);
 };
 
