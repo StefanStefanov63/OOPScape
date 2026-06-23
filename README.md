@@ -26,6 +26,8 @@
   WallShift for [R]ogue or defaults to Regression
 
   there are 2 types of enemies
+  
   the 1st from E will use BFS to get to player
-  the 2nd will randomly wonder around
+  
+  the 2nd form R will randomly wonder around
  </p>
