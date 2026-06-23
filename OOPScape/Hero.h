@@ -10,6 +10,6 @@ protected:
 public:
 	bool move(const Level& level, Direction direction);
 	Hero(const Position& currentPosition, std::unique_ptr<Ability> ability);
-
+	bool useAbilty(Game& game);
 };
 

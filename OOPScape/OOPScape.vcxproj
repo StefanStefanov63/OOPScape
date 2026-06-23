@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ability.cpp" />
+    <ClCompile Include="AbilityCommand.cpp" />
     <ClCompile Include="BFSMovementStrategy.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="EnemyMovementStrategy.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="HeroFactory.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="Dungeon.cpp" />
@@ -149,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ability.h" />
+    <ClInclude Include="AbilityCommand.h" />
     <ClInclude Include="BFSMovementStrategy.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CommandFactory.h" />
@@ -156,6 +159,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="EnemyMovementStrategy.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="HeroFactory.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="Dungeon.h" />

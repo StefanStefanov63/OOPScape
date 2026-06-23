@@ -8,8 +8,11 @@
 #include "EnemyFactory.h"
 #include "CommandFactory.h"
 #include "Enemy.h"
+#include <stack>
+#include "GameState.h"
 class Game
 {
+	std::stack<GameState> history;
 	Dungeon dungeon;
 	unsigned int currentLevel;
 
@@ -20,6 +23,9 @@ class Game
 static Dungeon loadDungeon(const std::string& filepath);
 bool EndCondition();
 void loadLevel();
+void captureGameState();
+
+void restoreGameState(const GameState& state);
 
 public:
 	Game(const std::string& filepath, char input);
@@ -33,7 +39,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const Game& game);
 	void run();
-
+	bool rewindGameState();
 	
 };
 

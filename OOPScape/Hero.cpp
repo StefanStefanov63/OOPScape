@@ -5,6 +5,11 @@ Hero::Hero(const Position& currentPosition, std::unique_ptr<Ability> ability)
 {
 }
 
+bool Hero::useAbilty(Game& game)
+{
+    return ability->use(game);
+}
+
 bool Hero::move(const Level& level, Direction direction)
 {
     Position next = currentPosition;

@@ -1,6 +1,7 @@
 #pragma once
 #include "MoveCommand.h"
 #include "NullCommand.h"
+#include "AbilityCommand.h"
 class Game;
 
 class CommandFactory

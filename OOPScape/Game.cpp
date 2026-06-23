@@ -44,8 +44,9 @@ std::vector<std::unique_ptr<Enemy>>& Game::getEnemies()
 
 void Game::run()
 {
+    captureGameState();
     while (true)
-    {
+    { 
         std::cout << *this;
         std::cout << "\nCommand(W - up, A - left, S - down, D - right or Q - specila abl):\n";
 
@@ -63,10 +64,44 @@ void Game::run()
                    e->move(hero->getPosition(), dungeon.getLevels()[currentLevel - 1]);
 
                if (EndCondition()) break;
+
+              captureGameState();
            }
         }
     }
+}
 
+void Game::captureGameState()
+{
+
+    std::vector<Position> enemyPos;
+    for (auto& e : enemies)
+    {
+        enemyPos.push_back(e->getPosition());
+    }
+    history.push(GameState(currentLevel, hero->getPosition(), enemyPos));
+}
+
+bool Game::rewindGameState()
+{
+   if (history.empty() || history.size() <2)
+       return false;
+
+   history.pop();
+   restoreGameState(history.top());
+   history.pop();
+   return true;
+}
+
+void Game::restoreGameState(const GameState& state)
+{
+    int i = 0;
+    hero->setPosition(state.heroPos);
+    for (auto& e : enemies)
+    {
+        e->setPosition(state.enemiesPos[i]);
+        i++;
+    }
 }
 
 bool Game::EndCondition()
@@ -120,9 +155,11 @@ bool Game::EndCondition()
 
 void Game::loadLevel()
 {
+    history = std::stack<GameState>();
     hero->setPosition(dungeon.getLevels()[currentLevel - 1].getHeroStarting());
     enemies.clear();
     enemies = EnemyFactory::createAll(dungeon.getLevels()[currentLevel - 1]);
+
     for (auto& e : this->enemies)
     {
         e->setStunTurns(e->getStunTurns() + 1);

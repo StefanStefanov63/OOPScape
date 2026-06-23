@@ -126,6 +126,12 @@
     <ClCompile Include="RandomMovementStrategy.cpp">
       <Filter>Source Files\EnemyMovementStrategies</Filter>
     </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="AbilityCommand.cpp">
+      <Filter>Source Files\Command</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ability.h">
@@ -193,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="RandomMovementStrategy.h">
       <Filter>Header Files\EnemyMovementStrategies</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="AbilityCommand.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

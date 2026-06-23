@@ -1,8 +1,10 @@
 #pragma once
+class Game;
+
 class Ability
 {
 public:
-    virtual void use() = 0;
+    virtual bool use(Game& game) = 0;
     virtual ~Ability() = default;
 };
 

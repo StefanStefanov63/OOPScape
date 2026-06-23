@@ -1,5 +1,7 @@
 #include "Regression.h"
+#include "Game.h"
 
-void Regression::use()
+bool Regression::use(Game& game)
 {
+	return game.rewindGameState();
 }
