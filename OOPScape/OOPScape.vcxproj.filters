@@ -226,5 +226,8 @@
     <Text Include="Dungeon2.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="Dungeon1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

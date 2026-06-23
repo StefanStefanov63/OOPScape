@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\..\Desktop\Dungeon1.txt" />
+    <Text Include="Dungeon1.txt" />
     <Text Include="Dungeon2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
