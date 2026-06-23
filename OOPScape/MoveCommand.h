@@ -1,17 +1,17 @@
 #pragma once
 #include "ICommand.h"
-#include "IEntity.h"
+#include "Hero.h"
 #include "Direction.h"
 #include "Level.h"
 class MoveCommand : public ICommand
 {
-    IEntity& entity;
+    Hero& hero;
     Direction direction;
     const Level& level;
 
 public:
-    MoveCommand(IEntity& anEntity, const Direction& aDirection, const Level& aLevel);
-    void execute() override;
+    MoveCommand(Hero& aHero, const Direction& aDirection, const Level& aLevel);
+    bool execute() override;
     
 };
 

@@ -7,7 +7,8 @@ enum class Color
 	Green,
 	Blue,
 	None,
-	White
+	White,
+	LightRed
 };
 
 WORD toConsoleColor(Color color);

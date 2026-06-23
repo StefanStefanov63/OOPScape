@@ -9,6 +9,7 @@ class Level
 	unsigned int size;
 
 	Position heroStarting;
+	std::vector<Position> enemyStarting;
 	Position exit;
 
 public:
@@ -21,5 +22,6 @@ public:
 	const Position& getExit() const;
 	unsigned int getSize() const;
 	const std::vector<std::vector<Node>>& getMap() const;
+	const std::vector<Position>& getEnemyStarting() const;
 };
 

@@ -5,6 +5,6 @@
 class NullCommand : public ICommand
 {
 public:
-    void execute() override;
+    bool execute() override;
 };
 

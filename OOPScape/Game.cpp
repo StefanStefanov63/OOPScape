@@ -13,6 +13,7 @@ Dungeon Game::loadDungeon(const std::string& filepath)
 Game::Game(const std::string& filepath, char input)
     : currentLevel(1), dungeon(loadDungeon(filepath))
     , hero(HeroFactory::create(dungeon.getLevels()[0].getHeroStarting(), input))
+    , enemies(EnemyFactory::createAll(dungeon.getLevels()[0]))
 {
 }
 
@@ -36,6 +37,11 @@ unsigned int Game::getCurrentLevel() const
     return currentLevel;
 }
 
+std::vector<std::unique_ptr<Enemy>>& Game::getEnemies()
+{
+    return enemies;
+}
+
 void Game::run()
 {
     while (true)
@@ -46,23 +52,45 @@ void Game::run()
         std::string input;
         std::cin >> input;
 
-        auto cmd = CommandFactory::create(input, *(this));
-        if (cmd) cmd->execute();
+        auto command = CommandFactory::create(input, *(this));
+        if (command)
+        {
+           if (command->execute())
+           {
+               if (EndCondition()) break;
 
-        
-        if (EndCondition()) break;
+               for (auto& e : enemies)
+                   e->move(hero->getPosition(), dungeon.getLevels()[currentLevel - 1]);
 
-        
-        /*for (auto& e : enemies)
-            e->update(*this);*/
-
-        if (EndCondition()) break;
+               if (EndCondition()) break;
+           }
+        }
     }
 
 }
 
 bool Game::EndCondition()
 {
+    bool enemy = false;
+
+    for (auto& e : enemies)
+    {
+        if (hero->getPosition() == e->getPosition())
+        {
+            enemy = true;
+            break;
+        }
+    }
+
+    if (enemy)
+    {
+        std::cout << *this;
+        setConsolColor(Color::LightRed);
+        std::cout << "\nYou lost, the monsters got you!";
+        setConsolColor(Color::None);
+        return enemy;
+    }
+
     bool exit = hero->getPosition() == dungeon.getLevels()[currentLevel - 1].getExit();
     if (exit)
     {   
@@ -70,8 +98,9 @@ bool Game::EndCondition()
 
         if (currentLevel < this->dungeon.getLevels().size())
         {
-            
+            setConsolColor(Color::Green);
             std::cout << "\nBeat Level!\n";
+            setConsolColor(Color::None);
 
             currentLevel++;
             loadLevel();
@@ -81,7 +110,9 @@ bool Game::EndCondition()
 
         else
         {
+            setConsolColor(Color::Yellow);
             std::cout << "\nBeat Game!\n";
+            setConsolColor(Color::None);
         }
     }
      return exit;
@@ -90,6 +121,12 @@ bool Game::EndCondition()
 void Game::loadLevel()
 {
     hero->setPosition(dungeon.getLevels()[currentLevel - 1].getHeroStarting());
+    enemies.clear();
+    enemies = EnemyFactory::createAll(dungeon.getLevels()[currentLevel - 1]);
+    for (auto& e : this->enemies)
+    {
+        e->setStunTurns(e->getStunTurns() + 1);
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Game& game)
@@ -122,10 +159,25 @@ std::ostream& operator<<(std::ostream& os, const Game& game)
 
         for (unsigned int col = 0; col < size; col++)
         {
-            if(game.hero->getPosition() == Position(row,col))
-                os << NodeFactory::createNode('H');
-            else
-                os << level.getMap()[row][col];
+            bool enemy = false;
+            
+            for (auto& e : game.enemies)
+            {
+                if (e->getPosition() == Position(row, col))
+                {
+                    os << NodeFactory::createNode('M');
+                    enemy = true;
+                    break;
+                }
+
+            }
+            if (!enemy)
+            {
+                if (game.hero->getPosition() == Position(row, col))
+                    os << NodeFactory::createNode('H');
+                else
+                    os << level.getMap()[row][col];
+            }
         }
         os << '\n';
     }

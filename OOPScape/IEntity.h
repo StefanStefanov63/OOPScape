@@ -11,7 +11,6 @@ protected:
 public:
 	void setPosition(const Position& currentPosition);
 	const Position& getPosition() const;
-	bool move(const Level& level, Direction direction);
 
 	IEntity(const Position& currentPosition);
 

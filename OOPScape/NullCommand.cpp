@@ -1,7 +1,8 @@
 #include "NullCommand.h"
-void NullCommand::execute()
+bool NullCommand::execute()
 {
 	setConsolColor(Color::Red);
 	std::cout << "Incorect Input\n";
 	setConsolColor(Color::None);
+	return false;
 }

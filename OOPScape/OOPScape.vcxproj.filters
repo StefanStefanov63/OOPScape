@@ -43,15 +43,21 @@
     <Filter Include="Source Files\Factories">
       <UniqueIdentifier>{4ff16b97-04ef-4997-a946-9315c08e38c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\EnemyMovementStrategies">
+      <UniqueIdentifier>{f41b0054-cf0e-481f-bd81-371bbe299cee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EnemyMovementStrategies">
+      <UniqueIdentifier>{038ca79a-b56a-4b37-ab50-dd6d2f2f6c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Commands">
+      <UniqueIdentifier>{4665e53b-a414-4fe9-b7c2-55c9201add80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Command">
+      <UniqueIdentifier>{8aad7691-f20d-4963-bbca-39d12a44ddf8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OOPScape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ICommand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ability.cpp">
@@ -96,17 +102,32 @@
     <ClCompile Include="Regression.cpp">
       <Filter>Source Files\Abilities</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFactory.cpp">
+      <Filter>Source Files\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMovementStrategy.cpp">
+      <Filter>Source Files\EnemyMovementStrategies</Filter>
+    </ClCompile>
+    <ClCompile Include="ICommand.cpp">
+      <Filter>Source Files\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveCommand.cpp">
+      <Filter>Source Files\Command</Filter>
+    </ClCompile>
     <ClCompile Include="NullCommand.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="BFSMovementStrategy.cpp">
+      <Filter>Source Files\EnemyMovementStrategies</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomMovementStrategy.cpp">
+      <Filter>Source Files\EnemyMovementStrategies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ICommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Ability.h">
       <Filter>Header Files\Abilities</Filter>
     </ClInclude>
@@ -149,8 +170,29 @@
     <ClInclude Include="Regression.h">
       <Filter>Header Files\Abilities</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFactory.h">
+      <Filter>Header Files\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMovementStrategy.h">
+      <Filter>Header Files\EnemyMovementStrategies</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
     <ClInclude Include="NullCommand.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="BFSMovementStrategy.h">
+      <Filter>Header Files\EnemyMovementStrategies</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomMovementStrategy.h">
+      <Filter>Header Files\EnemyMovementStrategies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

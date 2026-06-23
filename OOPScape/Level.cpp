@@ -20,26 +20,36 @@ Level::Level(std::ifstream& ifs)
 
 		for (unsigned int col = 0; col < n; col++)
 		{
-
 			char cSym =  line[col];
-			
-			
-			if (cSym == 'S')
+
+			switch (cSym)
 			{
-				if(hasStart)
+			case 'R':
+			case 'E':
+			{
+				enemyStarting.push_back(Position(row, col));
+				break;
+			}
+			case 'S':
+			{
+				if (hasStart)
 					throw std::runtime_error("Multiple start positions");
 
 				heroStarting = Position(row, col);
 				hasStart = true;
-			}
 
-			if (cSym == 'F')
+				break;
+			}
+			case 'F':
 			{
 				if (hasEnd)
 					throw std::runtime_error("Multiple end positions");
 
 				exit = Position(row, col);
 				hasEnd = true;
+
+				break;
+			}
 			}
 
 			nodeLine.push_back(NodeFactory::createNode(cSym));
@@ -83,6 +93,11 @@ unsigned int Level::getSize() const
 const std::vector<std::vector<Node>>& Level::getMap() const
 {
 	return map;
+}
+
+const std::vector<Position>& Level::getEnemyStarting() const
+{
+	return enemyStarting;
 }
 
 std::ostream& operator<<(std::ostream& os, const Level& level)

@@ -3,6 +3,6 @@ class ICommand
 {
 public:
     virtual ~ICommand() = default;
-    virtual void execute() = 0;
+    virtual bool execute() = 0;
 };
 
